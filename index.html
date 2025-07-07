@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Radio Station</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="radio-app">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1 class="logo">🎙️ AI Radio Station</h1>
+                <div class="header-info">
+                    <span class="current-time" id="currentTime">00:00:00</span>
+                    <span class="status-indicator" id="statusIndicator">● LIVE</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Left Sidebar -->
+            <nav class="sidebar">
+                <div class="nav-section">
+                    <h3>Navigation</h3>
+                    <ul class="nav-menu">
+                        <li><button class="nav-btn active" data-section="player">🎵 Player</button></li>
+                        <li><button class="nav-btn" data-section="news">📰 News</button></li>
+                        <li><button class="nav-btn" data-section="music">🎶 Music</button></li>
+                        <li><button class="nav-btn" data-section="social">📱 Social</button></li>
+                        <li><button class="nav-btn" data-section="settings">⚙️ Settings</button></li>
+                    </ul>
+                </div>
+                <div class="nav-section">
+                    <h3>Stations</h3>
+                    <select class="form-control" id="stationSelect">
+                        <option value="world">World News Focus</option>
+                        <option value="music">Music & Trends</option>
+                        <option value="local">Local Connect</option>
+                    </select>
+                </div>
+            </nav>
+
+            <!-- Content Area -->
+            <main class="content-area">
+                <!-- Player Section -->
+                <div class="section active" id="player">
+                    <div class="radio-player">
+                        <div class="player-main">
+                            <div class="play-button-container">
+                                <button class="play-btn" id="playBtn">▶️</button>
+                            </div>
+                            <div class="player-controls">
+                                <div class="volume-control">
+                                    <span>🔊</span>
+                                    <input type="range" class="volume-slider" id="volumeSlider" min="0" max="100" value="75">
+                                    <span id="volumeValue">75%</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ai-anchor">
+                            <div class="anchor-status">
+                                <span class="on-air">🔴 ON AIR</span>
+                                <span class="anchor-name">AI Anchor - Professional Male</span>
+                            </div>
+                            <div class="anchor-script">
+                                <div class="script-content" id="anchorScript">
+                                    Welcome to AI Radio Station. Coming up next, we have breaking news from around the world, followed by your favorite music selections...
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- News Section -->
+                <div class="section" id="news">
+                    <div class="news-tabs">
+                        <button class="tab-btn active" data-tab="world">World News</button>
+                        <button class="tab-btn" data-tab="local">Local News</button>
+                        <button class="tab-btn" data-tab="breaking">Breaking</button>
+                    </div>
+                    <div class="news-content">
+                        <div class="news-ticker">
+                            <div class="ticker-content" id="newsTicker">
+                                🚨 BREAKING: Global Climate Summit Reaches Historic Agreement in Geneva
+                            </div>
+                        </div>
+                        <div class="news-grid" id="newsGrid">
+                            <!-- News items will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Music Section -->
+                <div class="section" id="music">
+                    <div class="music-player">
+                        <div class="current-track">
+                            <div class="album-art">🎵</div>
+                            <div class="track-info">
+                                <h3 id="trackTitle">Electronic Dreams</h3>
+                                <p id="trackArtist">Future Beats</p>
+                                <p id="trackAlbum">Digital Horizons</p>
+                            </div>
+                        </div>
+                        <div class="music-controls">
+                            <button class="music-btn">⏮️</button>
+                            <button class="music-btn play-pause" id="musicPlayBtn">▶️</button>
+                            <button class="music-btn">⏭️</button>
+                        </div>
+                        <div class="playlist">
+                            <h3>Upcoming Tracks</h3>
+                            <div class="playlist-items" id="playlist">
+                                <!-- Playlist items will be populated by JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Social Section -->
+                <div class="section" id="social">
+                    <div class="social-tabs">
+                        <button class="tab-btn active" data-tab="feed">Social Feed</button>
+                        <button class="tab-btn" data-tab="trending">Trending</button>
+                    </div>
+                    <div class="social-content">
+                        <div class="social-feed" id="socialFeed">
+                            <!-- Social posts will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Settings Section -->
+                <div class="section" id="settings">
+                    <div class="settings-grid">
+                        <div class="setting-group">
+                            <h3>AI Voice Settings</h3>
+                            <div class="form-group">
+                                <label class="form-label">Voice Type</label>
+                                <select class="form-control" id="voiceType">
+                                    <option value="professional-male">Professional Male</option>
+                                    <option value="professional-female">Professional Female</option>
+                                    <option value="friendly-male">Friendly Male</option>
+                                    <option value="friendly-female">Friendly Female</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Speech Speed</label>
+                                <input type="range" class="form-control" id="speechSpeed" min="0.5" max="2" step="0.1" value="1">
+                                <span id="speedValue">1.0x</span>
+                            </div>
+                        </div>
+                        <div class="setting-group">
+                            <h3>Platform Support</h3>
+                            <div class="platform-checkboxes">
+                                <label><input type="checkbox" checked> iPhone</label>
+                                <label><input type="checkbox" checked> Android</label>
+                                <label><input type="checkbox" checked> Windows</label>
+                                <label><input type="checkbox" checked> Mac</label>
+                                <label><input type="checkbox" checked> Linux</label>
+                            </div>
+                        </div>
+                        <div class="setting-group">
+                            <h3>Location Settings</h3>
+                            <div class="form-group">
+                                <label class="form-label">City</label>
+                                <select class="form-control" id="citySelect">
+                                    <option value="new-york">New York</option>
+                                    <option value="london">London</option>
+                                    <option value="tokyo">Tokyo</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+            <!-- Right Sidebar -->
+            <aside class="right-sidebar">
+                <div class="sidebar-section">
+                    <h3>Now Playing</h3>
+                    <div class="now-playing">
+                        <div class="program-info">
+                            <h4 id="currentProgram">Morning News Briefing</h4>
+                            <p id="programDescription">International news and analysis</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="sidebar-section">
+                    <h3>Coming Up</h3>
+                    <div class="schedule" id="upcomingSchedule">
+                        <!-- Schedule items will be populated by JavaScript -->
+                    </div>
+                </div>
+                <div class="sidebar-section">
+                    <h3>Weather</h3>
+                    <div class="weather-widget" id="weatherWidget">
+                        <div class="weather-info">
+                            <h4 id="weatherCity">New York</h4>
+                            <p id="weatherTemp">72°F</p>
+                            <p id="weatherCondition">Partly Cloudy</p>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
