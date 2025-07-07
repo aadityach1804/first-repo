@@ -1,0 +1,47 @@
+{
+  "expo": {
+    "name": "AI Radio Station",
+    "slug": "ai-radio-station",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#2180C8"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.airadio.app"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#2180C8"
+      },
+      "edgeToEdgeEnabled": true,
+      "package": "com.airadio.app",
+      "permissions": [
+        "RECORD_AUDIO",
+        "READ_EXTERNAL_STORAGE", 
+        "WRITE_EXTERNAL_STORAGE",
+        "ACCESS_FINE_LOCATION",
+        "ACCESS_COARSE_LOCATION",
+        "INTERNET",
+        "ACCESS_NETWORK_STATE"
+      ]
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      "expo-av",
+      "expo-speech", 
+      "expo-location",
+      "expo-media-library",
+      "expo-notifications"
+    ]
+  }
+}
